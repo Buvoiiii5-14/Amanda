@@ -1,0 +1,51 @@
+#BG-video {
+    background-size: cover; /* ปรับขนาดให้เต็มพื้นที่ */
+    background-position: center; /* จัดกึ่งกลางรูปภาพ */
+position: relative;
+width: 100%;
+height: 100vh; /* ทำให้พื้นที่เต็มหน้าจอ */
+overflow: auto; /* ซ่อนส่วนเกินของวิดีโอ */
+
+}
+div.box {
+background-color: rgba(255, 255,255,0.6);
+}
+#bg-video {
+position: fixed;
+top: 0;
+left: 0;
+min-width: 100%; /* ทำให้ความกว้างของวิดีโอเต็ม 100% ของ container */
+min-height: 100%; /* ทำให้ความสูงของวิดีโอเต็ม 100% ของ container */
+object-fit: cover; /* ทำให้วิดีโอครอบคลุมพื้นที่ทั้งหมด โดยไม่ให้เสียสัดส่วน */
+z-index: -1; /* ทำให้วิดีโออยู่หลังเนื้อหา */
+}
+
+#BG-video .content {
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+text-align: center;
+color: white;
+z-index: 1;
+background: rgba(0, 0, 0, 0.4); /* เพิ่มพื้นหลังโปร่งแสง */
+padding: 20px;
+border-radius: 10px;
+width: 80%; /* กำหนดความกว้างของข้อความ */
+max-width: 600px; /* ขีดจำกัดขนาดสูงสุดของข้อความ */
+}
+
+#BG-video .content h1 {
+font-size: 3rem;
+margin: 0;
+font-weight: bold;
+text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+#BG-video .content p {
+font-size: 1.25rem;
+margin-top: 1rem;
+line-height: 1.5;
+font-weight: 300;
+text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}

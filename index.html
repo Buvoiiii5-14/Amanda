@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+   
+    <!-- update the version number as needed -->
+    <script defer src="/__/firebase/11.0.2/firebase-app.js"></script>
+    <!-- include only the Firebase features as you need -->
+    <script defer src="/__/firebase/11.0.2/firebase-auth.js"></script>
+    <script defer src="/__/firebase/11.0.2/firebase-database.js"></script>
+    <script defer src="/__/firebase/11.0.2/firebase-messaging.js"></script>
+    <script defer src="/__/firebase/11.0.2/firebase-storage.js"></script>
+    <!-- initialize the SDK after all desired features are loaded -->
+     <!-- Firebase App (Core) SDK -->
+<script src="https://www.gstatic.com/firebasejs/9.25.0/firebase-app.js"></script>
+
+<!-- Firebase Realtime Database SDK -->
+<script src="https://www.gstatic.com/firebasejs/9.25.0/firebase-database.js"></script>
+
+    <script defer src="/__/firebase/init.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="header.css">
+    <link rel="stylesheet" href="about.css">
+    <title>ถึงDPD ตุ้ยดุ่ย</title>
+    <style>
+        /* รีเซ็ต CSS เบื้องต้น */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+            
+        }
+
+        #services {
+
+            background-color: #171717;
+            margin-left: calc(50% - 50vw); /* ขยายออกไปทางซ้าย */
+            margin-right: calc(50% - 50vw); /* ขยายออกไปทางขวา */
+            
+        }
+        #services h2 {
+
+            color: aliceblue;
+
+            }
+
+        #home {
+            background-image: url('123.png'); /* ใส่ URL ของรูปภาพที่ต้องการ */
+            background-size: cover; /* ปรับขนาดให้เต็มพื้นที่ */
+            background-position: center; /* จัดกึ่งกลางรูปภาพ */
+            width: 100vw; /* ขยายความกว้างเต็มหน้าจอ */
+            height: 100vh; /* ทำให้ section สูงเต็มหน้าจอ */
+            padding: 40px 20px; /* เพิ่มพื้นที่ภายใน */
+            color: #fff; /* เปลี่ยนข้อความเป็นสีขาวเพื่อให้อ่านง่าย */
+            text-align: center; /* จัดข้อความให้กึ่งกลาง */
+            border-radius: 10px; /* เพิ่มขอบโค้ง */
+            box-sizing: border-box; /* รวม padding ในการคำนวณขนาด */
+            margin: 0; /* ลบ margin ที่อาจจะเกิดขึ้น */
+
+           
+            margin-left: calc(50% - 50vw); /* ขยายออกไปทางซ้าย */
+            margin-right: calc(50% - 50vw); /* ขยายออกไปทางขวา */
+            
+            overflow-x: auto;
+         
+           
+        }
+
+       
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: #000000;
+        }
+
+        /* จัดการโครงสร้างส่วนหัว */
+        header {
+            display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: #333;
+      color: #fff;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        header h1 {
+            font-size: 1.8rem;
+      font-weight: bold;
+      margin: 0;
+      color: #ffdd57; /* สีทอง */
+      cursor: pointer;
+        }
+
+        nav ul {
+            list-style-type: none;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #ffeb3b;
+        }
+
+        /* เนื้อหาหลัก */
+        main {
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        section {
+            margin-bottom: 30px;
+            
+        }
+
+        section h2 {
+            color: #ffffff;
+            margin-bottom: 10px;
+            font-size: 1.5em;
+        }
+
+        section p {
+            color: #ffffff;
+            line-height: 1.8;
+        }
+
+        /* การออกแบบปุ่ม */
+        button {
+            padding: 10px 20px;
+            background-color: #0073e6;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+
+        button:hover {
+            background-color: #005bb5;
+        }
+
+        /* การจัดการส่วนท้าย */
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 15px 0;
+            margin-top: 20px;
+        }
+
+        footer a {
+            color: #ffeb3b;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+        .video-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* ทำให้ grid ปรับขนาดตามความกว้าง */
+    gap: 20px;
+    padding: 20px;
+    background-color: #000000;
+}
+iframe {
+    width: 100%;
+    height: 100%; /* ใช้ความสูงของ container */
+    border: none;
+    aspect-ratio: 16/9; /* ตั้งอัตราส่วนของวิดีโอ */
+}
+
+
+        #video {
+    background-image: url('https://www.example.com/path/to/your-image.jpg');
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: auto;
+    padding: 40px 20px;
+    color: #fff;
+    text-align: center;
+    box-sizing: border-box;
+    margin: 0;
+}
+
+        /* ตั้งค่าขนาดและฟอนต์ของหัวข้อภายใน section */
+        #video h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    padding: 20px 0;
+}
+        /* ตั้งค่าของย่อหน้าใน section */
+        #video p {
+            font-size: 1.2rem;
+            line-height: 1.5;
+        }
+        #about {
+
+        
+ 
+ background-size: cover; /* ปรับขนาดให้เต็มพื้นที่ */
+ background-position: center; /* จัดกึ่งกลางรูปภาพ */
+ width: 100vw; /* ขยายความกว้างเต็มหน้าจอ */    
+ height: 100vh; /* ทำให้ section สูงเต็มหน้าจอ */
+ padding: 40px 20px; /* เพิ่มพื้นที่ภายใน */
+ color: #fff; /* เปลี่ยนข้อความเป็นสีขาวเพื่อให้อ่านง่าย */
+ text-align: center; /* จัดข้อความให้กึ่งกลาง */
+ border-radius: 10px; /* เพิ่มขอบโค้ง */
+ box-sizing: border-box; /* รวม padding ในการคำนวณขนาด */
+ margin: 0; /* ลบ margin ที่อาจจะเกิดขึ้น */
+ margin-left: calc(50% - 50vw); /* ขยายออกไปทางซ้าย */
+ margin-right: calc(50% - 50vw); /* ขยายออกไปทางขวา */
+ overflow-x: auto;
+
+ padding: 2rem 1rem;
+ text-align: center;
+ background-color: #ffffff;
+}
+
+#about h2 {
+ font-size: 2rem;
+ margin-bottom: 20px;
+color: #000000;
+}
+#about h3 {
+ font-size: 2rem;
+ margin-bottom: 20px;
+color: #040404;
+}
+/* ตั้งค่าของย่อหน้าใน section */
+#about p {
+ font-size: 1.2rem;
+ line-height: 1.5;
+}
+
+
+section #about h3 {
+font-size: 2rem;
+margin-bottom: 1.5rem;
+color: #333;
+}
+        .social-links {
+            display: flex;
+            gap: 20px; /* ระยะห่างระหว่างไอคอน */
+            justify-content: center; /* จัดให้อยู่กลางหน้าจอ */
+            padding: 20px;
+        }
+
+        .social-links a {
+            color: #ffffff; /* สีพื้นฐานของไอคอน */
+            font-size: 2rem; /* ขนาดไอคอน */
+            text-decoration: none; /* ลบเส้นใต้ */
+            transition: color 0.3s ease; /* ตั้งค่าเอฟเฟกต์เปลี่ยนสี */
+        }
+
+        /* เปลี่ยนสีเมื่อเอาเมาส์วาง */
+        .social-links a:hover {
+            color: #1da1f2; /* เปลี่ยนสีเมื่อ hover */
+        }
+        .card-container {
+    display: flex;
+    gap: 2rem;
+    overflow-x: auto; /* ให้การ์ดเลื่อนในแนวนอน */
+    padding: 1rem 0;
+    scroll-snap-type: x mandatory; /* ให้การเลื่อนเป็นแบบซิกแซก */
+    justify-content: center; /* ให้การ์ดอยู่ตรงกลางในแนวนอน */
+    align-items: center; /* ให้การ์ดอยู่ตรงกลางในแนวตั้ง */
+    width: 100%; /* ครอบคลุมความกว้างของ container */
+}
+
+.profile-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 250px; /* ขนาดการ์ด */
+    text-align: center;
+    flex-shrink: 0;
+    scroll-snap-align: start;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.profile-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.profile-card h2 {
+    font-size: 1.25rem;
+    margin: 0.5rem 0;
+    color: #444;
+}
+
+.profile-card p {
+    margin: 0.3rem 0;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+        /* ไอคอนโซเชียลมีเดีย */
+        .social-links {
+  margin-top: 0.75rem;
+}
+
+.social-links a {
+  color: #333;
+  font-size: 1.25rem;
+  margin: 0 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+  color: #007bff;
+}
+
+        @media (max-width: 1024px) {
+    #video h2 {
+        font-size: 1.5rem; /* ลดขนาดของหัวข้อในหน้าจอที่เล็กลง */
+    }
+    .video-container {
+        grid-template-columns: repeat(2, 1fr); /* ลดจำนวนคอลัมน์ลงเมื่อหน้าจอแคบ */
+    }
+    .card-container {
+        flex-direction: row;
+        justify-content: space-around; /* กระจายการ์ดให้มีช่องว่าง */
+    }
+
+    .profile-card {
+        width: 45%; /* ขนาดการ์ด 45% ของพื้นที่ */
+        max-width: 400px; /* ขนาดสูงสุด */
+    }
+    #BG-video {
+        height: 70vh; /* ลดความสูงของ section ในแท็บเล็ต */
+    }
+
+    #BG-video .content {
+        width: 85%; /* ขยายข้อความให้เต็มพื้นที่มากขึ้น */
+    }
+
+    #BG-video .content h1 {
+        font-size: 2.5rem; /* ปรับขนาดข้อความให้เหมาะสม */
+    }
+
+    #BG-video .content p {
+        font-size: 1.125rem;
+    }
+}
+
+@media (max-width: 768px) {
+    
+    #video h2 {
+        font-size: 1.2rem; /* ลดขนาดหัวข้ออีก */
+    }
+    .video-container {
+        grid-template-columns: 1fr; /* ให้แสดงวิดีโอเป็นคอลัมน์เดียว */
+    }
+    iframe {
+        height: 200px; /* ลดความสูงของวิดีโอในหน้าจอเล็ก */
+    }
+    .card-container {
+        flex-direction: column; /* จัดการ์ดในแนวตั้ง */
+        align-items: center; /* จัดการ์ดให้ชิดกลาง */
+    }
+
+    .profile-card {
+        width: 100%; /* ทำให้การ์ดเต็มความกว้างของ container */
+        max-width: 350px; /* กำหนดขนาดสูงสุด */
+    }
+    .profile-card img {
+        height: 150px; /* ลดความสูงของภาพ */
+    }
+    
+    #BG-video {
+        height: 50vh; /* ลดความสูงของ section ในมือถือ */
+    }
+
+    #BG-video .content {
+        width: 90%; /* ขยายข้อความให้เต็มพื้นที่มากขึ้น */
+        padding: 15px;
+    }
+
+    #BG-video .content h1 {
+        font-size: 2rem; /* ปรับขนาดข้อความให้เล็กลง */
+    }
+
+    #BG-video .content p {
+        font-size: 1rem; /* ปรับขนาดข้อความให้เล็กลง */
+    }
+}
+
+@media (max-width: 480px) {
+    .video-container {
+        padding: 10px;
+    }
+    iframe {
+        height: 160px; /* ปรับขนาดของ iframe */
+    }
+    .profile-card h2 {
+        font-size: 1.2rem; /* ลดขนาดตัวอักษร */
+    }
+    .profile-card p {
+        font-size: 0.9rem;
+    }
+   
+    
+}
+        #background-section {
+    background-size: cover; /* คงสัดส่วนพื้นหลังให้เต็ม */
+    background-position: center; /* ตั้งให้ภาพอยู่ตรงกลาง */
+    background-attachment: fixed; /* ให้พื้นหลังคงที่เมื่อเลื่อน */
+    width: 100vw;
+    height: 100vh;
+    padding: 40px 20px;
+    color: #fff;
+    text-align: center;
+    border-radius: 10px;
+    box-sizing: border-box;
+    margin: 0;
+    margin-left: calc(50% - 50vw); /* ทำให้ขนาดตรงกลาง */
+    margin-right: calc(50% - 50vw); /* ทำให้ขนาดตรงกลาง */
+   
+        }
+
+        /* ปุ่มควบคุม */
+        .button-container {
+            position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+        }
+
+        .button {
+            background-color: rgba(0, 0, 0, 0.6);
+    border: none;
+    padding: 10px 20px;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+        }
+
+        .button:hover {
+            background-color: rgba(255, 255, 255, 0.8);
+            color: black;
+        }
+ 
+   
+    
+
+       .card {
+        background-color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 2rem;
+    border-radius: 10px;
+    margin-bottom: 2rem; /* ระยะด้านล่างของการ์ด */
+       }
+       #mute-button {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      background-color: rgba(0, 0, 0, 0.7);
+      color: white;
+      padding: 10px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 72px; /* ปรับขนาดไอคอน */
+      border: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #mute-button:hover {
+      background-color: rgba(0, 0, 0, 0.9);
+    }
+
+    h4 {
+        color: rgb(255, 61, 255);
+    }
+    </style>
+
+  <link rel="stylesheet" href="BG-video.css">
+</head>
+<body>
+
+    <audio id="background-audio" loop autoplay>
+        <source src="Amanda.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+      <!-- ปุ่มเปิด-ปิดเสียง -->
+      <button id="mute-button" onclick="toggleMute()">🔊</button>
+
+    <!-- ส่วนหัวของเว็บไซต์ -->
+    <header>
+        <h1>บู๊ตึ๊งจะผงัดDPD</h1>
+        <nav>
+            <ul>
+                <li><a href="#about">เกี่ยวกับเรา</a></li>
+                <li><a href="#video">บริการของเรา</a></li>
+                <li><a href="#services">ติดต่อเรา</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- ส่วนเนื้อหา -->
+    <main>
+       
+        <section id="BG-video">
+          
+            <video autoplay muted loop id="bg-video">
+                <source src="BG.mp4" type="video/mp4">
+                 <source src="BG.webm" type="video/webm">
+                <source src="BG.ogg" type="video/ogg">
+            </video>
+            <div class="content">
+                <h1>สวัสดีไอ้พวก DPD ตุ้ยดุ่ย</h1>
+                <p><H4>AMANDA </H4> มีข้อความเสียงจะบอก</p>
+                <p>กดลำโพงด้านซ้ายเพื่อเพิ่มบรรยากาศ</p>
+            </div>
+        </section>
+
+        <div id="video-section">
+            <div class="container mt-5">
+                <div class="card">
+                  <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                      <div class="carousel-item active">
+                        <img src="bank.jpg" class="d-block w-100" alt="...">
+                      </div>
+                      <div class="carousel-item">
+                        <img src="Bank02.jpg" class="d-block w-100" alt="...">
+                      </div>
+                      <div class="carousel-item">
+                        <img src="bank03.jpg" class="d-block w-100" alt="...">
+                      </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Next</span>
+                    </button>
+                  </div>
+                  <div class="card-body">
+                    <h5 class="card-title">ประกาศ</h5>
+                    <p class="card-text">ผม โก๋แบงค์ ตัวแทนเป็นหน้าเป็นตาของเซิฟ5-14  ศุกร์นี้พร้อมโดนปล้นกันรึยัง ?? </p>
+                  </div>
+                </div>
+              </div>
+        </div>
+          
+           
+            
+        <section id="about">
+            <h3>เกี่ยวกับเรา</h3>
+            <div class="card-container">
+                <!-- การ์ดแนะนำตัว -->
+                <div class="profile-card">
+                    <img src="Pic01.png" alt="Profile Picture">
+                    <h2>i7K.โก๋แบงค์</h2>
+                    <p>ตำแหน่ง :หัวกิล  </p>
+                    <p>ปูเป้ ใช่ </p>
+                    <p>ฟา ไม่ </p>
+                    <p>ID : 1710204 </p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/profile.php?id=100069567565316" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="https://discord.gg/8rgCz7qN" target="_blank" aria-label="Discord">
+                            <i class="fab fa-discord"></i>
+                        </a>
+                        <!-- <a href="https://instagram.com/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a> -->
+                    </div>
+                </div>
+                <!-- การ์ดแนะนำตัวซ้ำกันอีก 5 ครั้ง -->
+                <div class="profile-card">
+                    <img src="Pic02.png" alt="Profile Picture">
+                    <h2>น้อล - เปาเป๊า</h2>
+                    <p>ตำแหน่ง :ผู้ดูแล  </p>
+                    <p>ชอบรวบรวมข้อมูล และ กระจายเสียง </p>
+                    <p>ID : 1512493 </p>
+                    <div class="social-links">
+                        <a href="https://facebook.com/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="https://discord.gg/8rgCz7qN" target="_blank" aria-label="Discord">
+                            <i class="fab fa-discord"></i>
+                        </a>
+                        <!-- <a href="https://instagram.com/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a> -->
+                    </div>
+                </div>
+                <!-- เพิ่มการ์ดที่เหลือด้วยการคัดลอก profile-card นี้ -->
+                <div class="profile-card">
+                    <img src="Pic03.png" alt="Profile Picture">
+                    <h2>น้อล-ชาฮันนา</h2>
+                    <p>ตำแหน่ง :สตรีงาม  </p>
+                    <p>ชอบหาหนุ่มเพิ่ม แบบไม่จำกัด </p>
+                    <p>ID : 1497782 </p>
+                    <div class="social-links">
+                        <a href="https://facebook.com/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="https://discord.gg/8rgCz7qN" target="_blank" aria-label="Discord">
+                            <i class="fab fa-discord"></i>
+                        </a>
+                        <!-- <a href="https://instagram.com/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a> -->
+                    </div>
+                </div>
+                <div class="profile-card">
+                    <img src="Pic04.png" alt="Profile Picture">
+                    <h2>ตะมุ-ตะมิ</h2>
+                    <p>ตำแหน่ง :รองหัวกิล  </p>
+                    <p>ผม เอก 8 เมีย 8 บัพ </p>
+                    <p>ID : 1177260 </p>
+                    <div class="social-links">
+                        <a href="https://facebook.com/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="https://discord.gg/8rgCz7qN" target="_blank" aria-label="Discord">
+                            <i class="fab fa-discord"></i>
+                        </a>
+                        <!-- <a href="https://instagram.com/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a> -->
+                    </div>
+                </div>
+                <div class="profile-card">
+                    <img src="Pic05.png" alt="Profile Picture">
+                    <h2>เฟิงจินม้ง</h2>
+                    <p>ตำแหน่ง :รองหัวกิล  </p>
+                    <p>ชอบลู </p>
+                    <p>ID : 1720525 </p>
+                    <div class="social-links">
+                        <a href="https://facebook.com/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="https://discord.gg/8rgCz7qN" target="_blank" aria-label="Discord">
+                            <i class="fab fa-discord"></i>
+                        </a>
+                        <!-- <a href="https://instagram.com/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a> -->
+                    </div>
+                </div>
+                <div class="profile-card">
+                    <img src="Pic06.png" alt="Profile Picture">
+                    <h2>กบฏ - สุรา</h2>
+                    <p>ตำแหน่ง :แม่ทัพ  </p>
+                    <p>มะมะหมูเด้ง </p>
+                    <p>ID : 1411707 </p>
+                    <div class="social-links">
+                        <a href="https://facebook.com/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="https://discord.gg/8rgCz7qN" target="_blank" aria-label="Discord">
+                            <i class="fab fa-discord"></i>
+                        </a>
+                        <!-- <a href="https://instagram.com/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a> -->
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="video">
+            <h2>คลิปล่าสุด หัดมาดูบ้างนะ DPD </h2>
+            <div class="video-container">
+                <!-- วิดีโอที่ 1 -->
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/qGesIO84yR8?si=gCsy9bKg2K5hfoy6" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        
+                <!-- วิดีโอที่ 2 -->
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/HVw9CIySNu4?si=pBDbF4th00SOn9zD" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>     
+
+                <!-- วิดีโอที่ 3 -->
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/xe5zWqz9Nio?si=CULrDiJgoSCOlT7C" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>        
+              
+                <!-- วิดีโอที่ 4 -->
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/7O4LL95nBL8?si=SpbazgysSYny_L-3" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>              
+             
+                <!-- วิดีโอที่ 5 -->
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/Dpcgit4kLd4?si=RPLy9ihZ7uwjJrCg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>        
+              
+                <!-- วิดีโอที่ 6 -->
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/ewbRbH3shFQ?si=oKZfSIKUtV5_YXsw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>            </div>
+        
+        </section>
+  
+        <footer id="services">
+            <h2>ติดต่อเข้ากิล</h2>
+                <div class="social-links">
+                    <!-- ลิงก์ไปยัง Discord -->
+                    <a href="https://discord.gg/8rgCz7qN" target="_blank" aria-label="Discord">
+                        <i class="fab fa-discord"></i>
+                    </a>
+                    <!-- ลิงก์ไปยัง Facebook -->
+                    <a href="https://www.facebook.com/profile.php?id=100069567565316" target="_blank" aria-label="Facebook">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <!-- ลิงก์ไปยัง YouTube -->
+                    <a href="https://www.youtube.com/@xeno_x1365/videos" target="_blank" aria-label="YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+        </footer>
+    </main>
+
+    <!-- ส่วนท้ายของเว็บไซต์ -->
+    <script type="module">
+
+        // Import the functions you need from the SDKs you need
+      
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+      
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-analytics.js";
+      
+        // TODO: Add SDKs for Firebase products that you want to use
+      
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+      
+        // Your web app's Firebase configuration
+      
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      
+        const firebaseConfig = {
+      
+          apiKey: "AIzaSyDZXKOmBOu8IboUAnqBJ5lqmWc235jPDNE",
+      
+          authDomain: "dpdtuidoy5-14.firebaseapp.com",
+      
+          databaseURL: "https://dpdtuidoy5-14-default-rtdb.asia-southeast1.firebasedatabase.app",
+      
+          projectId: "dpdtuidoy5-14",
+      
+          storageBucket: "dpdtuidoy5-14.firebasestorage.app",
+      
+          messagingSenderId: "865887061887",
+      
+          appId: "1:865887061887:web:2536df5a9b5ceb3eb7fc4a",
+      
+          measurementId: "G-T0XEBJQNNW"
+      
+        };
+      
+      
+        // Initialize Firebase
+      
+       const app = initializeApp(firebaseConfig);
+const database = getDatabase(app);
+       
+        const db = getDatabase();
+set(ref(db, 'users/' + userId), {
+  username: "ชื่อผู้ใช้",
+  email: "email@example.com",
+  profile_picture : "https://example.com/image.png"
+});
+      </script>
+    <script src="BGvoice.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
