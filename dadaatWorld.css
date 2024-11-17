@@ -1,0 +1,44 @@
+
+#amanda-video {
+    text-align: center;
+    padding: 20px;
+}
+
+#amanda-chat {
+    font-family: 'Arial', sans-serif;
+    font-size: 36px;
+    color: #ff6347;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    background-color: #f0f8ff;
+    border-radius: 10px;
+    margin-top: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* สไตล์ของ Video Container */
+.video-containerAmanda {
+    display: grid;
+            grid-template-columns: repeat(2, 1fr); /* 2 คอลัมน์ */
+            gap: 20px; /* ระยะห่างระหว่างวิดีโอ */
+            justify-items: center; /* จัดให้อยู่กลาง */
+            margin-top: 20px;
+}
+
+/* ทำให้ทุกๆ วิดีโอ responsive */
+.video-containerAmanda video {
+    width: 100%;
+    max-width: 640px; /* กำหนดขนาดสูงสุด */
+    height: auto; /* ให้ความสูงของวิดีโอปรับอัตโนมัติ */
+    border-radius: 10px; /* ขอบมน */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* เงารอบๆ */
+}
+
+/* สำหรับมือถือ: เพิ่มการแสดงผลวิดีโอใน 1 แถว */
+@media (max-width: 768px) {
+    .video-containerAmanda {
+        flex-direction: column; /* เปลี่ยนให้วิดีโอแสดงผลในแนวตั้ง */
+        align-items: center;
+    }
+}
