@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แสดงรูปภาพจากโฟลเดอร์ Static</title>
+    <style>
+        /* กำหนดพื้นหลังของทั้งหน้า */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f5;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* สไตล์สำหรับ navbar */
+        nav {
+            width: 100%;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 10px 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            border-radius: 0 0 20px 20px; /* โค้งมนที่ด้านล่าง */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007aff; /* สีฟ้าของ Apple */
+        }
+
+        nav .menu {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav .menu li {
+            margin-left: 30px;
+        }
+
+        nav .menu li a {
+            text-decoration: none;
+            font-size: 1rem;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav .menu li a:hover {
+            color: #007aff; /* เปลี่ยนสีเป็นฟ้าเมื่อ hover */
+        }
+
+        /* การเพิ่มช่องว่างให้กับข้อความ */
+        h1 {
+            text-align: center;
+            margin-top: 100px; /* เพิ่มระยะห่างจาก navbar */
+            font-size: 2rem;
+            color: #333;
+            font-weight: 600;
+        }
+
+        /* การจัดรูปแบบกริดของรูปภาพ */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            background-color: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 12px;
+        }
+
+        .gallery-item p {
+            padding: 10px;
+            text-align: center;
+            background-color: #f9f9f9;
+            margin: 0;
+            font-size: 14px;
+            color: #555;
+            font-weight: 500;
+        }
+
+        .gallery-item p:hover {
+            color: #007aff; /* ใช้สีฟ้าของ Apple */
+        }
+
+        .gallery-item img {
+            border: 3px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .gallery-item img:hover {
+            border: 3px solid #007aff; /* ขอบสีฟ้าขณะ hover */
+        }
+
+        /* สไตล์ของ Modal */
+        .modal {
+            display: none; /* ซ่อน modal เริ่มต้น */
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.8); /* พื้นหลังมืด */
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            margin: 0 auto;
+        }
+
+        .modal-content img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+        }
+
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 2rem;
+            font-weight: bold;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.5);
+            border: none;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: #007aff;
+        }
+
+        /* Media Queries สำหรับมือถือและอุปกรณ์ขนาดเล็ก */
+        @media (max-width: 768px) {
+            nav {
+                padding: 10px 15px;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            nav .menu {
+                flex-direction: column;
+                margin-top: 10px;
+                width: 100%;
+                text-align: left;
+            }
+
+            nav .menu li {
+                margin-left: 0;
+                margin-bottom: 10px;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+                margin-top: 130px;
+            }
+
+            .gallery {
+                padding: 10px;
+            }
+
+            .gallery-item {
+                border-radius: 8px; /* มุมโค้งมนเล็กลง */
+            }
+        }
+
+        /* Media Queries สำหรับอุปกรณ์มือถือที่เล็กที่สุด */
+        @media (max-width: 480px) {
+            nav .logo {
+                font-size: 1.3rem;
+            }
+
+            nav .menu li a {
+                font-size: 0.9rem;
+            }
+
+            h1 {
+                font-size: 1.6rem;
+                margin-top: 140px;
+            }
+
+            .gallery-item {
+                border-radius: 6px; /* มุมโค้งมนเล็กลง */
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav>
+        <div class="logo">My Gallery</div>
+        <ul class="menu">
+            <li><a href="#">หน้าแรก</a></li>
+            <li><a href="#">เกี่ยวกับ</a></li>
+            <li><a href="#">ติดต่อ</a></li>
+        </ul>
+    </nav>
+
+    <h1>แสดงรูปภาพจากโฟลเดอร์ Static</h1>
+
+    <div class="gallery" id="imageGallery"></div>
+
+    <!-- Modal สำหรับแสดงภาพเต็มหน้าจอ -->
+    <div id="myModal" class="modal">
+        <span class="close" id="closeModal">&times;</span>
+        <div class="modal-content">
+            <img id="modalImage" src="" alt="Full Size Image">
+        </div>
+    </div>
+
+    <script>
+        // ฟังก์ชันดึงข้อมูลรูปภาพจากไฟล์ JSON
+        fetch('images.json')
+            .then(response => response.json())
+            .then(images => {
+                const gallery = document.getElementById('imageGallery');
+
+                if (images.length === 0) {
+                    const noImages = document.createElement('p');
+                    noImages.textContent = 'ไม่มีรูปภาพในโฟลเดอร์';
+                    gallery.appendChild(noImages);
+                    return;
+                }
+
+                // แสดงรูปภาพในกริด
+                images.forEach(image => {
+                    const galleryItem = document.createElement('div');
+                    galleryItem.classList.add('gallery-item');
+
+                    // สร้างภาพ
+                    const img = document.createElement('img');
+                    img.src = '/static/' + image; // URL ของไฟล์ในโฟลเดอร์ static
+                    img.alt = image;
+
+                    // เมื่อคลิกที่รูปภาพ ให้แสดงภาพขนาดเต็มใน Modal
+                    img.onclick = function() {
+                        openModal('/static/' + image);
+                    };
+
+                    // สร้างคำอธิบายหรือชื่อไฟล์ (optional)
+                    const caption = document.createElement('p');
+                    caption.textContent = image;
+
+                    // เพิ่มภาพและคำอธิบายเข้าไปใน gallery item
+                    galleryItem.appendChild(img);
+                    galleryItem.appendChild(caption);
+
+                    // เพิ่ม gallery item เข้าไปในกริด
+                    gallery.appendChild(galleryItem);
+                });
+            })
+            .catch(error => {
+                console.error('Error loading images:', error);
+            });
+
+        // ฟังก์ชันเปิด modal
+        function openModal(imageSrc) {
+            const modal = document.getElementById('myModal');
+            const modalImage = document.getElementById('modalImage');
+            modal.style.display = "flex";  // แสดง modal
+            modalImage.src = imageSrc;    // กำหนดแหล่งที่มาของภาพใน modal
+        }
+
+        // ฟังก์ชันปิด modal
+        document.getElementById('closeModal').onclick = function() {
+            const modal = document.getElementById('myModal');
+            modal.style.display = "none";  // ซ่อน modal
+        }
+
+        // คลิกที่พื้นหลังของ modal จะปิด modal
+        window.onclick = function(event) {
+            const modal = document.getElementById('myModal');
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+
+</body>
+</html>

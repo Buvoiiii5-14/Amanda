@@ -528,7 +528,56 @@ color: #333;
 
     <!-- ส่วนเนื้อหา -->
     <main>
-       
+        <div>
+            <!-- ปุ่มที่ลอยอยู่มุมขวาล่าง -->
+            <a href="page.html" class="apple-btn">แกลลอรี่ บู๊</a>
+        </div>
+        
+        <style>
+            /* ปุ่มสไตล์ดำ-เหลือง */
+            .apple-btn {
+                text-decoration: none;
+                color: #fff; /* สีตัวอักษรขาว */
+                background-color: #000; /* พื้นหลังสีดำ */
+                padding: 18px 50px; /* ขนาดปุ่มที่ใหญ่ขึ้น */
+                border-radius: 50px; /* ปรับมุมให้กลม */
+                font-size: 18px; /* ขนาดตัวอักษรที่ใหญ่ขึ้น */
+                font-weight: 600; /* ตัวอักษรหนาขึ้นเล็กน้อย */
+                display: inline-block;
+                text-align: center;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* เงาเบาๆ สีดำ */
+                transition: all 0.3s ease; /* เอฟเฟกต์การเปลี่ยนแปลง */
+                position: fixed; /* ตำแหน่งที่คงที่ */
+                bottom: 30px; /* ระยะห่างจากขอบล่าง */
+                right: 30px; /* ระยะห่างจากขอบขวา */
+                z-index: 1000; /* ให้ปุ่มอยู่เหนือเนื้อหาทั้งหมด */
+            }
+        
+            /* เมื่อมีการ hover ที่ปุ่ม */
+            .apple-btn:hover {
+                background-color: #ffd700; /* เปลี่ยนพื้นหลังเป็นสีเหลืองทองเมื่อ hover */
+                color: #000; /* เปลี่ยนตัวอักษรเป็นสีดำเมื่อ hover */
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* เงาเข้มขึ้นเมื่อ hover */
+                transform: translateY(-5px); /* ให้ปุ่มดูเหมือนยกขึ้น */
+            }
+        
+            /* เมื่อกดปุ่ม */
+            .apple-btn:active {
+                transform: translateY(2px); /* ปุ่มกดลงเล็กน้อยเมื่อคลิก */
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* เงาลดลงเมื่อกด */
+            }
+            
+            /* ปรับให้ปุ่มดูเหมือนเคลื่อนไหวได้ */
+            .apple-btn:focus {
+                outline: none; /* ลบเส้นขอบตอนปุ่มถูกเลือก */
+                box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.5); /* เงาสีเหลืองทองรอบปุ่มเมื่อตัวเลือก */
+            }
+        
+        </style>
+        
+        
+        
+        
         <section id="BG-video">
           
             <video autoplay muted loop id="bg-video">
@@ -549,10 +598,10 @@ color: #333;
                   <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner">
                       <div class="carousel-item active">
-                        <img src="อมานด้า-removebg.png" class="d-block w-100" alt="...">
+                        <img src="123.png" class="d-block w-100" alt="...">
                       </div>
                       <div class="carousel-item">
-                        <img src="bank.jpg" class="d-block w-100" alt="...">
+                        <img src="456.png" class="d-block w-100" alt="...">
                       </div>
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
@@ -566,7 +615,7 @@ color: #333;
                   </div>
                   <div class="card-body">
                     <h5 class="card-title">ประกาศ</h5>
-                    <p class="card-text">ผม อมานด้า เดอะฮัค  ตัวแทนกระบอกเสียงให้กิลบู๊  อาทิตย์นี้พร้อมจะโดนด่ากันรึยัง ?? </p>
+                    <p class="card-text">บู๊โว้ยยยยยยย</p>
                   </div>
                 </div>
               </div>
@@ -587,10 +636,7 @@ color: #333;
                     <p>ID : 1710204 </p>
                     <div class="social-links">
                         <a href="https://www.facebook.com/profile.php?id=100069567565316" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-                        <a href="https://discord.gg/8rgCz7qN" target="_blank" aria-label="Discord">
-                            <i class="fab fa-discord"></i>
-                        </a>
-                        <!-- <a href="https://instagram.com/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a> -->
+                        
                     </div>
                 </div>
                 <!-- การ์ดแนะนำตัวซ้ำกันอีก 5 ครั้ง -->
@@ -601,11 +647,8 @@ color: #333;
                     <p>ชอบรวบรวมข้อมูล และ กระจายเสียง </p>
                     <p>ID : 1512493 </p>
                     <div class="social-links">
-                        <a href="https://facebook.com/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-                        <a href="https://discord.gg/8rgCz7qN" target="_blank" aria-label="Discord">
-                            <i class="fab fa-discord"></i>
-                        </a>
-                        <!-- <a href="https://instagram.com/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a> -->
+                        <a href="https://www.facebook.com/profile.php?id=100069567565316" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        
                     </div>
                 </div>
                 <!-- เพิ่มการ์ดที่เหลือด้วยการคัดลอก profile-card นี้ -->
@@ -616,11 +659,8 @@ color: #333;
                     <p>ชอบหาหนุ่มเพิ่ม แบบไม่จำกัด </p>
                     <p>ID : 1497782 </p>
                     <div class="social-links">
-                        <a href="https://facebook.com/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-                        <a href="https://discord.gg/8rgCz7qN" target="_blank" aria-label="Discord">
-                            <i class="fab fa-discord"></i>
-                        </a>
-                        <!-- <a href="https://instagram.com/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a> -->
+                        <a href="https://www.facebook.com/profile.php?id=100069567565316" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        
                     </div>
                 </div>
                 <div class="profile-card">
@@ -630,11 +670,8 @@ color: #333;
                     <p>ผม เอก 8 เมีย 8 บัพ </p>
                     <p>ID : 1177260 </p>
                     <div class="social-links">
-                        <a href="https://facebook.com/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-                        <a href="https://discord.gg/8rgCz7qN" target="_blank" aria-label="Discord">
-                            <i class="fab fa-discord"></i>
-                        </a>
-                        <!-- <a href="https://instagram.com/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a> -->
+                        <a href="https://www.facebook.com/profile.php?id=100069567565316" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        
                     </div>
                 </div>
                 <div class="profile-card">
@@ -644,11 +681,8 @@ color: #333;
                     <p>ชอบลู </p>
                     <p>ID : 1720525 </p>
                     <div class="social-links">
-                        <a href="https://facebook.com/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-                        <a href="https://discord.gg/8rgCz7qN" target="_blank" aria-label="Discord">
-                            <i class="fab fa-discord"></i>
-                        </a>
-                        <!-- <a href="https://instagram.com/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a> -->
+                        <a href="https://www.facebook.com/profile.php?id=100069567565316" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        
                     </div>
                 </div>
                 <div class="profile-card">
@@ -658,11 +692,8 @@ color: #333;
                     <p>มะมะหมูเด้ง </p>
                     <p>ID : 1411707 </p>
                     <div class="social-links">
-                        <a href="https://facebook.com/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
-                        <a href="https://discord.gg/8rgCz7qN" target="_blank" aria-label="Discord">
-                            <i class="fab fa-discord"></i>
-                        </a>
-                        <!-- <a href="https://instagram.com/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a> -->
+                        <a href="https://www.facebook.com/profile.php?id=100069567565316" target="_blank" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        
                     </div>
                 </div>
             </div>
@@ -697,7 +728,7 @@ color: #333;
         </section>
         
         <section id="video">
-            <h2>คลิปล่าสุด หัดมาดูบ้างนะ DPD </h2>
+            <h2 id="amanda-chat">คลิปล่าสุด หัดมาดูบ้างนะ DPD </h2>
             <div class="video-container">
               
                 <iframe width="560" height="315" src="https://www.youtube.com/embed/uY_DCHQMdjw?si=xVoNE18vPLRf1UZ-" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
